@@ -243,6 +243,7 @@ class Compiler
                  @ruby_configure,
                  '-C',
                  '--prefix', @ruby_install,
+                 "--with-openssl-dir=#{@local_build}",
                  '--enable-bundled-libyaml',
                  '--without-gmp',
                  '--disable-dtrace',
@@ -362,6 +363,7 @@ class Compiler
                  '--disable-dtrace',
                  '--enable-debug-env',
                  '--disable-install-rdoc',
+                 "--with-openssl-dir=#{@local_build}",        
                  '--with-static-linked-ext')
       @utils.run(compile_pass2_env, "make #{@options[:make_args]}")
       @utils.cp('ruby', @options[:output])
