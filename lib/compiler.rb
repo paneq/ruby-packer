@@ -363,7 +363,7 @@ class Compiler
                  '--enable-debug-env',
                  '--disable-install-rdoc',
                  '--with-static-linked-ext')
-      @utils.run(compile_pass2_env, "make #{@options[:make_args]}")
+      @utils.run(compile_pass2_env.merge({'LDFLAGS' => "-lpthread"}), "make #{@options[:make_args]}")
       @utils.cp('ruby', @options[:output])
     end
   end
